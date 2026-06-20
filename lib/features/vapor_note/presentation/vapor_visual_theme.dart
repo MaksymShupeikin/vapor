@@ -1,0 +1,255 @@
+import 'package:flutter/material.dart';
+
+class VaporVisualTheme {
+  const VaporVisualTheme({
+    required this.name,
+    required this.background,
+    required this.surface,
+    required this.surfaceHigh,
+    required this.outline,
+    required this.primaryText,
+    required this.secondaryText,
+    required this.accent,
+  });
+
+  final String name;
+  final Color background;
+  final Color surface;
+  final Color surfaceHigh;
+  final Color outline;
+  final Color primaryText;
+  final Color secondaryText;
+  final Color accent;
+
+  ThemeData toThemeData(ThemeData base) {
+    const cursorColor = Colors.white;
+    final selectionColor = Colors.white.withValues(alpha: 0.22);
+    final handleColor = Colors.white.withValues(alpha: 0.78);
+
+    return base.copyWith(
+      scaffoldBackgroundColor: background,
+      colorScheme: ColorScheme.dark(
+        primary: accent,
+        onPrimary: background,
+        surface: surface,
+        onSurface: primaryText,
+        surfaceContainerHighest: surfaceHigh,
+        outline: outline,
+        outlineVariant: outline,
+        shadow: Colors.black,
+      ),
+      textTheme: base.textTheme.apply(
+        bodyColor: primaryText,
+        displayColor: primaryText,
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: cursorColor,
+        selectionColor: selectionColor,
+        selectionHandleColor: handleColor,
+      ),
+    );
+  }
+}
+
+const vaporVisualThemes = <VaporVisualTheme>[
+  VaporVisualTheme(
+    name: 'Graphite',
+    background: Color(0xFF202124),
+    surface: Color(0xFF2A2B2E),
+    surfaceHigh: Color(0xFF343538),
+    outline: Color(0xFF66686D),
+    primaryText: Color(0xFFF0F0F1),
+    secondaryText: Color(0xFFA9ABAF),
+    accent: Color(0xFFD6D7D9),
+  ),
+  VaporVisualTheme(
+    name: 'Charcoal',
+    background: Color(0xFF151515),
+    surface: Color(0xFF202020),
+    surfaceHigh: Color(0xFF2A2A2A),
+    outline: Color(0xFF575757),
+    primaryText: Color(0xFFF4F4F4),
+    secondaryText: Color(0xFFA5A5A5),
+    accent: Color(0xFFE1E1E1),
+  ),
+  VaporVisualTheme(
+    name: 'Slate',
+    background: Color(0xFF1D2227),
+    surface: Color(0xFF272D33),
+    surfaceHigh: Color(0xFF313841),
+    outline: Color(0xFF66707A),
+    primaryText: Color(0xFFEFF3F6),
+    secondaryText: Color(0xFFA8B0B8),
+    accent: Color(0xFFD3DCE3),
+  ),
+  VaporVisualTheme(
+    name: 'Warm Grey',
+    background: Color(0xFF24221F),
+    surface: Color(0xFF2D2B27),
+    surfaceHigh: Color(0xFF373530),
+    outline: Color(0xFF6A6660),
+    primaryText: Color(0xFFF2F0EC),
+    secondaryText: Color(0xFFB0AAA2),
+    accent: Color(0xFFE0DDD7),
+  ),
+  VaporVisualTheme(
+    name: 'Ash',
+    background: Color(0xFF1F2020),
+    surface: Color(0xFF282929),
+    surfaceHigh: Color(0xFF333434),
+    outline: Color(0xFF626363),
+    primaryText: Color(0xFFF0F1F0),
+    secondaryText: Color(0xFFA9AAA9),
+    accent: Color(0xFFDADBDA),
+  ),
+  VaporVisualTheme(
+    name: 'Mist',
+    background: Color(0xFF202424),
+    surface: Color(0xFF2A2F2F),
+    surfaceHigh: Color(0xFF343A3A),
+    outline: Color(0xFF667071),
+    primaryText: Color(0xFFF0F5F5),
+    secondaryText: Color(0xFFA7B1B1),
+    accent: Color(0xFFD5DDDD),
+  ),
+  VaporVisualTheme(
+    name: 'Moss',
+    background: Color(0xFF1E241F),
+    surface: Color(0xFF273027),
+    surfaceHigh: Color(0xFF303A31),
+    outline: Color(0xFF637066),
+    primaryText: Color(0xFFF0F4F0),
+    secondaryText: Color(0xFFA9B2AA),
+    accent: Color(0xFFD8DFD8),
+  ),
+  VaporVisualTheme(
+    name: 'Olive',
+    background: Color(0xFF24251E),
+    surface: Color(0xFF2E3027),
+    surfaceHigh: Color(0xFF383A30),
+    outline: Color(0xFF6D705F),
+    primaryText: Color(0xFFF2F3EC),
+    secondaryText: Color(0xFFB0B2A5),
+    accent: Color(0xFFE0E1D7),
+  ),
+  VaporVisualTheme(
+    name: 'Forest',
+    background: Color(0xFF1B231F),
+    surface: Color(0xFF232D28),
+    surfaceHigh: Color(0xFF2E3833),
+    outline: Color(0xFF5F6E66),
+    primaryText: Color(0xFFEDF4F0),
+    secondaryText: Color(0xFFA2B0A9),
+    accent: Color(0xFFD2DDD7),
+  ),
+  VaporVisualTheme(
+    name: 'Marine',
+    background: Color(0xFF1C2428),
+    surface: Color(0xFF253036),
+    surfaceHigh: Color(0xFF303B42),
+    outline: Color(0xFF61717A),
+    primaryText: Color(0xFFEDF4F7),
+    secondaryText: Color(0xFFA5B1B7),
+    accent: Color(0xFFD4DDE2),
+  ),
+  VaporVisualTheme(
+    name: 'Ink',
+    background: Color(0xFF1B1D23),
+    surface: Color(0xFF242730),
+    surfaceHigh: Color(0xFF2E323D),
+    outline: Color(0xFF606778),
+    primaryText: Color(0xFFF0F2F7),
+    secondaryText: Color(0xFFA6ABB8),
+    accent: Color(0xFFD8DCE5),
+  ),
+  VaporVisualTheme(
+    name: 'Steel',
+    background: Color(0xFF202226),
+    surface: Color(0xFF2A2D33),
+    surfaceHigh: Color(0xFF343840),
+    outline: Color(0xFF666D78),
+    primaryText: Color(0xFFF0F2F5),
+    secondaryText: Color(0xFFA9AFB8),
+    accent: Color(0xFFD8DDE4),
+  ),
+  VaporVisualTheme(
+    name: 'Stone',
+    background: Color(0xFF232220),
+    surface: Color(0xFF2D2C29),
+    surfaceHigh: Color(0xFF373632),
+    outline: Color(0xFF6A6760),
+    primaryText: Color(0xFFF2F1EE),
+    secondaryText: Color(0xFFB0ADA6),
+    accent: Color(0xFFE0DED9),
+  ),
+  VaporVisualTheme(
+    name: 'Taupe',
+    background: Color(0xFF252220),
+    surface: Color(0xFF302C29),
+    surfaceHigh: Color(0xFF3A3531),
+    outline: Color(0xFF706860),
+    primaryText: Color(0xFFF3F0ED),
+    secondaryText: Color(0xFFB2AAA3),
+    accent: Color(0xFFE2DDD8),
+  ),
+  VaporVisualTheme(
+    name: 'Clay',
+    background: Color(0xFF27221F),
+    surface: Color(0xFF312B27),
+    surfaceHigh: Color(0xFF3B342F),
+    outline: Color(0xFF746860),
+    primaryText: Color(0xFFF4F0EC),
+    secondaryText: Color(0xFFB5AAA3),
+    accent: Color(0xFFE4DDD7),
+  ),
+  VaporVisualTheme(
+    name: 'Dusk',
+    background: Color(0xFF222027),
+    surface: Color(0xFF2C2932),
+    surfaceHigh: Color(0xFF36313D),
+    outline: Color(0xFF6A6374),
+    primaryText: Color(0xFFF3F0F7),
+    secondaryText: Color(0xFFAEA8B8),
+    accent: Color(0xFFE0D9E7),
+  ),
+  VaporVisualTheme(
+    name: 'Plum',
+    background: Color(0xFF251F25),
+    surface: Color(0xFF302831),
+    surfaceHigh: Color(0xFF3A313B),
+    outline: Color(0xFF706371),
+    primaryText: Color(0xFFF4EFF4),
+    secondaryText: Color(0xFFB2A8B3),
+    accent: Color(0xFFE1DAE2),
+  ),
+  VaporVisualTheme(
+    name: 'Cocoa',
+    background: Color(0xFF24201D),
+    surface: Color(0xFF2F2925),
+    surfaceHigh: Color(0xFF39332E),
+    outline: Color(0xFF6E655D),
+    primaryText: Color(0xFFF3EFEA),
+    secondaryText: Color(0xFFB2AAA1),
+    accent: Color(0xFFE1DAD3),
+  ),
+  VaporVisualTheme(
+    name: 'Sepia',
+    background: Color(0xFF26231D),
+    surface: Color(0xFF302C25),
+    surfaceHigh: Color(0xFF3A352D),
+    outline: Color(0xFF70685C),
+    primaryText: Color(0xFFF4F0E9),
+    secondaryText: Color(0xFFB4ADA0),
+    accent: Color(0xFFE3DCD0),
+  ),
+  VaporVisualTheme(
+    name: 'Pine',
+    background: Color(0xFF1D2422),
+    surface: Color(0xFF26302E),
+    surfaceHigh: Color(0xFF303A38),
+    outline: Color(0xFF61706D),
+    primaryText: Color(0xFFEEF5F3),
+    secondaryText: Color(0xFFA5B2AF),
+    accent: Color(0xFFD5DFDC),
+  ),
+];
