@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../application/vapor_notes_history.dart';
 import 'frosted_panel.dart';
 import 'levitating_button.dart';
@@ -193,6 +194,7 @@ class _VaporHistoryDrawerState extends State<VaporHistoryDrawer> {
   }
 
   void _startSearch() {
+    HapticFeedback.selectionClick();
     setState(() {
       _isSearching = true;
     });
@@ -208,6 +210,7 @@ class _VaporHistoryDrawerState extends State<VaporHistoryDrawer> {
       return;
     }
 
+    HapticFeedback.selectionClick();
     setState(() {
       _isSearching = false;
       _searchController.clear();
@@ -497,9 +500,26 @@ class _HistoryNoteTile extends StatelessWidget {
   }
 
   static String _formatTime(DateTime dateTime) {
+    const monthNames = <String>[
+      'января',
+      'февраля',
+      'марта',
+      'апреля',
+      'мая',
+      'июня',
+      'июля',
+      'августа',
+      'сентября',
+      'октября',
+      'ноября',
+      'декабря',
+    ];
+
+    final day = dateTime.day.toString();
+    final month = monthNames[dateTime.month - 1];
     final hour = dateTime.hour.toString().padLeft(2, '0');
     final minute = dateTime.minute.toString().padLeft(2, '0');
-    return '$hour:$minute';
+    return '$day $month, $hour:$minute';
   }
 }
 

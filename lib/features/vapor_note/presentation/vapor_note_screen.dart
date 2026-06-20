@@ -311,7 +311,8 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
     _setEditorText(note.text);
     _replaceHiddenInputText('');
     _inputFocusNode.unfocus();
-    _closeHistory();
+    HapticFeedback.selectionClick();
+    _closeHistory(withHaptic: false);
   }
 
   Future<void> _deleteSavedNote(SavedVaporNote note) async {
@@ -327,6 +328,7 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
 
   Future<bool> _confirmDeleteNote(SavedVaporNote note) async {
     final title = note.title.trim().isEmpty ? 'Untitled' : note.title.trim();
+    HapticFeedback.lightImpact();
 
     final confirmed = await showGeneralDialog<bool>(
       context: context,
@@ -376,7 +378,10 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         TextButton(
-                          onPressed: () => Navigator.of(context).pop(false),
+                          onPressed: () {
+                            HapticFeedback.selectionClick();
+                            Navigator.of(context).pop(false);
+                          },
                           style: TextButton.styleFrom(
                             foregroundColor: colorScheme.onSurface,
                           ),
@@ -425,6 +430,7 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
     _activeNoteId = null;
     _isTonePickerOpen = false;
     _statusSignal++;
+    HapticFeedback.mediumImpact();
 
     if (_statusMessage != null) {
       setState(() {
@@ -492,6 +498,7 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
       return;
     }
 
+    HapticFeedback.lightImpact();
     setState(() {
       _isTonePickerOpen = !_isTonePickerOpen;
     });
@@ -504,6 +511,7 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
     }
     final tone = _improvementTones[toneIndex];
 
+    HapticFeedback.selectionClick();
     setState(() {
       _toneIndex = toneIndex;
       _isTonePickerOpen = false;
@@ -570,6 +578,7 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
   }
 
   void _toggleHistory() {
+    HapticFeedback.lightImpact();
     setState(() {
       _isHistoryOpen = !_isHistoryOpen;
       if (_isHistoryOpen) {
@@ -585,11 +594,14 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
     }
   }
 
-  void _closeHistory() {
+  void _closeHistory({bool withHaptic = true}) {
     if (!_isHistoryOpen) {
       return;
     }
 
+    if (withHaptic) {
+      HapticFeedback.lightImpact();
+    }
     setState(() {
       _isHistoryOpen = false;
     });
@@ -602,6 +614,7 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
   }
 
   void _toggleThemePicker() {
+    HapticFeedback.lightImpact();
     setState(() {
       _isThemePickerOpen = !_isThemePickerOpen;
       if (_isThemePickerOpen) {
@@ -618,6 +631,7 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
   }
 
   void _selectTheme(int index) {
+    HapticFeedback.selectionClick();
     setState(() {
       _themeIndex = index;
     });
@@ -631,6 +645,7 @@ class _VaporNoteScreenState extends State<VaporNoteScreen> {
 
   void _handleCanvasTap() {
     if (_isTonePickerOpen) {
+      HapticFeedback.selectionClick();
       setState(() {
         _isTonePickerOpen = false;
       });

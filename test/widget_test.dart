@@ -67,6 +67,10 @@ void main() {
 
     expect(find.text('History'), findsOneWidget);
     expect(find.text('quiet signal'), findsNWidgets(2));
+    expect(
+      find.textContaining(RegExp(r'\d{1,2} [а-я]+, \d{2}:\d{2}')),
+      findsOneWidget,
+    );
   });
 
   testWidgets('asks for confirmation before deleting a saved note', (
